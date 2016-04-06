@@ -39,7 +39,7 @@
 
   <p>This is a demo of giving instant feedback as blocks are changed.</p>
 
-  <p>&rarr; More info on <a href="https://developers.google.com/blockly/installation/code-generators#realtime_generation">Realtime generation</a>...</p>
+  <p>&rarr; More info on <a href="https://developers.google.com/blockly/installation/code-generators#realtime_generation">Realtime generation</a>&hellip;</p>
 
   <table>
     <tr>
@@ -327,10 +327,12 @@ Graph.resize = function() {
  */
 Graph.init = function() {
   Graph.workspace = Blockly.inject('blocklyDiv',
-      {media: '../../media/',
+      {collapse: false,
+       media: '../../media/',
        toolbox: document.getElementById('toolbox')});
   Blockly.Xml.domToWorkspace(Graph.workspace,
       document.getElementById('startBlocks'));
+  Graph.workspace.clearUndo();
 
   // When Blockly changes, update the graph.
   Graph.workspace.addChangeListener(Graph.drawVisualization);
